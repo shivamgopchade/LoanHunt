@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="loan_applied">
+    {% for i in loans %}
+    <div class="item">
+        id:{{ i.pk }}<br>
+        Applicant:{{ i.applicant }}<br>
+        amount:{{ i.amt }}<br>
+        tenure: {{ i.tenure }}<br>
+        interest:{{ i.interest }}<br><br>
+
+        <a href="{% url 'loan_accept' i.pk %}"><button type="submit" class="btn btn-outline-success">ACCEPT</button></a>
+        <a href="{% url 'loan_modify_request' i.pk %}"><button type="submit" class="btn btn-outline-warning">MODIFY</button></a>
+
+    </div><br>
+
+    {% endfor %}
+</div>
+{% endblock content %}

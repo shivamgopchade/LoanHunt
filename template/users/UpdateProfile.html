@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="content-section">
+    <h2 class="text-monospace text-center text-success" style="margin-top:100px;margin-bottom: 20px;">Profile details
+    </h2>
+    <form method="POST" enctype="multipart/form-data" class="bank_form">
+        {% csrf_token %}
+        <img src="{{ user.profile.image.url }}" alt="profile_image"
+            style="margin-left: 40%;height:250px;width:250px;border-radius: 50%;">
+        <fieldset class="vertical-form-group">
+            {{ p_form|crispy }}
+
+        </fieldset>
+        <fieldset class="vertical-form-group">
+            {{ u_form|crispy }}
+
+        </fieldset>
+        <div class="horizontal-form-group">
+            <button class="btn btn-primary text-center border rounded border-primary shadow"
+                data-bs-hover-animate="pulse" type="submit"
+                style="width: 105px;height: 46px;padding: 10px;margin: 0px;filter: contrast(155%);color: green;">SAVE</button>
+        </div>
+    </form>
+
+</div>
+{% endblock content%}

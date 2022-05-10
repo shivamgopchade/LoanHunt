@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="loan_applied">
+    <h3><u>Asked for Loan:</u></h3>
+    <div class="item">
+        Applicant:{{ loan.applicant }}<br><br>
+        Amount:{{ loan.amt }}<br><br>
+        Tenure: {{ loan.tenure }}<br><br>
+        Interest:{{ loan.interest }}<br><br>
+        {% if loan.status %}
+        Status:Fulfilled
+        <br>
+        by:{{ loan.lender }}
+        {% else %}
+            status:Not Fulfilled<br><br>
+
+        {% endif %}
+
+    </div><br>
+</div>
+<div class="loan_applied">
+    <h3><u>Requested Loans</u></h3>
+    {% for i in req %}
+    <div class="item">
+        by:{{ i.request }}
+        tenure: {{ i.tenure }}<br><br>
+        interest:{{ i.interest }}<br><br>
+        Date:{{ i.asked_date }}<br><br>
+        {% if i.status %}
+            status:Accepted
+        {% else %}
+            status:Hold<br><br>
+            <a href="{% url 'accept_request' i.pk %}"><button type="submit" class="btn btn-outline-success">ACCEPT</button></a>
+        {% endif %}
+    </div><br>
+
+    {% endfor %}
+    {% endblock content %}
+</div>

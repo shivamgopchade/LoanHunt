@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <h2 class="text-center text-success" style="margin-top:100px;margin-bottom: 20px;">Modify loan
+    </h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="vertical-form-group" style="margin-top: 50px;">
+            <input type="number" placeholder="tenure in months" name="tenure" required><br>
+            <input type="number" placeholder="interest" name="interest" required>
+        </div>
+        <div class="vertical-form-group">
+            <button type="submit" class="btn btn-outline-info">REQUEST</button>
+            <small class="text-muted" ml-2>
+            </small>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block content %}
+<h2>
+    <p class="text-center">
+        Logged Out Sucessfully
+    </p>
+</h2>
+<h4>Logged Out Sucessfully</h4>
+
+<h5>
+
+    <div class="border-top pt-4">
+        <small class="text-muted">
+            Want to login Again?<a class="ml-2" href="{% url 'login' %}">Log In</a>
+        </small>
+
+    </div>
+</h5>
+{% endblock content %}

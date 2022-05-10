@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="loan_applied">
+    <h3><u>Requested Loans</u></h3>
+    {% for i in applied %}
+    <div class="item">
+        Applicant:{{ i.applicant }}<br><br>
+        Amount:{{ i.amt }}<br><br>
+        Tenure: {{ i.tenure }}<br><br>
+        Interest:{{ i.interest }}<br><br>
+        {% if i.status %}
+        Status:Fulfilled
+        <br>
+        by:{{ i.lender }}
+        {% else %}
+            status:Not Fulfilled<br><br>
+            <a href="{% url 'loan_delete' i.pk %}"><button type="submit" class="btn btn-outline-danger">DELETE</button></a>
+            <a href="{% url 'loan_modify' i.pk %}"><button type="submit" class="btn btn-outline-warning">MODIFY</button></a>
+            <a href="{% url 'modify_request_view' i.pk %}"><button type="submit" class="btn btn-outline-info">REQUESTS</button></a>
+        {% endif %}
+
+    </div><br>
+    {% endfor %}
+</div>
+<div class="loan_applied">
+    <h3><u>Accepted Loans</u></h3>
+    {% for i in accepted %}
+    <div class="item">
+        Applicant:{{ i.applicant }}<br><br>
+        amount:{{ i.amt }}<br><br>
+        tenure: {{ i.tenure }}<br><br>
+        interest:{{ i.interest }}<br><br>
+    </div><br>
+    {% endfor %}
+    {% endblock content %}
+</div>

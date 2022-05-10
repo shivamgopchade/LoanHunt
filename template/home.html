@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <header class="masthead" style="background-image:url('{% static 'assets/img/header-bg.jpg' %}');background-size:cover;">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in"><span></span></div>
+                <div class="intro-heading text-uppercase"><span>Hunt your loan!!</span></div><a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="{% url 'apply_loan' %}">Apply</a></div>
+        </div>
+    </header>
+    <section id="steps">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase">Get started</h2>
+                    <h3 class="text-muted section-subheading">Follow below simple steps!!</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-group timeline">
+                        <li class="list-group-item">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/1.jpg' %}"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Step 1</h4>
+                                    <h4 class="subheading">Signup for quick loans</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Signup using proper credentials and secure it for future use.Dont worry we dont share any client data to anyone.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item timeline-inverted">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/2.jpg' %}"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Step 2</h4>
+                                    <h4 class="subheading">Fill your bank details </h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Bank details are necessary for other clients to know your status.You can update them whenever required.Note! this will effect your CIBIL score</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/3.jpg' %}"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Step 3</h4>
+                                    <h4 class="subheading">Apply for loan</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Apply for loan by filling data required.Once applied all other clients can see your request and may reject/accept it.The status can be seen at your dashboard</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item timeline-inverted">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/4.jpg' %}"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Step 4</h4>
+                                    <h4 class="subheading">Patience</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">You will get notified once some one accepts your request.Then the matter goes to mutual understanding between clients</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part<br>&nbsp;Of Millions of<br>&nbsp;Journey!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
