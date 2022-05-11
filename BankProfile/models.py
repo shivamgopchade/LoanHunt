@@ -8,7 +8,11 @@ class bank_profile(models.Model):
     Pan = models.FileField(upload_to='Pan/',null=True)
     Salary = models.FileField(upload_to='Salary/',null=True)
     Bank=models.CharField(max_length=30,null=True)
+    DUE=models.IntegerField(null=True)
+    CUR=models.FloatField(null=True)
+    Credit_duration=models.IntegerField(null=True)
     CTC=models.IntegerField(null=True)
+    CIBIL=models.IntegerField(null=True,default=0)
     #user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     #info = models.CharField(max_length=50, label='Tell Something about yourself',blank=True)
     def __str__(self):

@@ -17,17 +17,38 @@ def loan_view(request):
     return render(request,'loans/loan_view.html',context)
 @login_required
 def apply_loan(request):
+    cibil = request.user.bank_profile.CIBIL
+    max = 0
+
+    if (cibil > 700):
+        max = 10000000
+    elif (cibil > 650):
+        max = 6000000
+    elif cibil > 600:
+        max = 3000000
+    elif cibil > 550:
+        max = 1000000
+    elif cibil > 500:
+        max = 100000
+    elif cibil > 450:
+        max = 50000
+    else:
+        max = 10000
+
     if request.method=="POST":
         applicant=request.user
         amt=request.POST['amt']
-        tenure=request.POST['tenure']
-        interest=request.POST['interest']
-        loan=loans(applicant=applicant,amt=amt,tenure=tenure,interest=interest)
-        loan.save()
+        if int(amt)<=max:
 
-        return redirect('loan_dashboard')
-    else:
-        return render(request,'loans/apply_loan.html')
+            tenure=request.POST['tenure']
+            interest=request.POST['interest']
+            loan=loans(applicant=applicant,amt=amt,tenure=tenure,interest=interest)
+            loan.save()
+
+            return redirect('loan_dashboard')
+
+    return render(request,'loans/apply_loan.html',{'max':max})
+
 @login_required
 def loan_dashboard(request):
     context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user)}

@@ -5,6 +5,12 @@
     <div class="item">
         id:{{ i.pk }}<br>
         Applicant:{{ i.applicant }}<br>
+        {% if i.applicant.bank_profile.CIBIL %}
+        CIBIL score={{ i.applicant.bank_profile.CIBIL }}<br>
+        {% else %}
+        CIBIL score=0<br>
+        {% endif %}
+
         amount:{{ i.amt }}<br>
         tenure: {{ i.tenure }}<br>
         interest:{{ i.interest }}<br><br>

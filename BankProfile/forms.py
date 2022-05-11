@@ -5,7 +5,7 @@ class BankProfileform(forms.ModelForm):
 
     class Meta:
         model=bank_profile
-        fields=['Aadhar','Pan','Salary','Bank','CTC']
+        fields=['Aadhar','Pan','Salary','Bank','DUE','CUR','Credit_duration','CTC']
 
 class BankProfileUpdateForm(forms.ModelForm):
 

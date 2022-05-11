@@ -11,7 +11,7 @@ def register(request):
             form.save()
             username=form.cleaned_data.get('username')
             #messages.success(request,f'account created sucessfully for {username}.Please Login')
-            return redirect('home')
+            return redirect('login')
         else:
             #username=request.POST['username']
             #messages.warning(request,f'Something went wrong please try Again {username}')
