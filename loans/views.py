@@ -47,7 +47,7 @@ def apply_loan(request):
             loan=loans(applicant=applicant,amt=amt,tenure=tenure,interest=interest)
             loan.save()
             message = "Loan of id=" + str(loan.pk) + " applied successfully of\namount:" + str(loan.amt) + "\ntenure:" + str(loan.tenure) + "\ninterest:" + str(loan.interest)+"\nYou will receive mail once any client accepts the loan"
-            #send_message("Loan Applied!", message, loan.applicant.email)
+            send_message("Loan Applied!", message, loan.applicant.email)
             return redirect('loan_dashboard')
 
     return render(request,'loans/apply_loan.html',{'max':max})
@@ -55,7 +55,7 @@ def apply_loan(request):
 @login_required
 def loan_dashboard(request):
 
-    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user),'mail_id':settings.EMAIL_HOST_USER,'pass':settings.EMAIL_HOST_PASSWORD}
+    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user)}
 
     return render(request,'loans/loan_dashboard.html',context)
 @login_required
@@ -66,9 +66,9 @@ def accept(request,pk):
     l.status=True
     l.save()
     message="Dear "+str(l.applicant)+", your loan with id:"+str(l.id)+"and amount:" +str(l.amt)+"has been accepted by "+str(l.lender)
-    #send_message("Loan accepted!", message, l.applicant.email)
+    send_message("Loan accepted!", message, l.applicant.email)
     message="You have successfully accepted loan with id"+str(l.id)+"and amount:"+str(l.amt)
-    #send_message("loan processed successfully!",message,l.lender.email)
+    send_message("loan processed successfully!",message,l.lender.email)
 
     return redirect('loan_view')
 
@@ -79,7 +79,7 @@ def delete(request,pk):
         email=l.applicant.email
         amt=l.amt
         l.delete()
-        #send_message("Loan updated successfully","Loan of amount:"+str(amt)+" deleted successfully",email)
+        send_message("Loan updated successfully","Loan of amount:"+str(amt)+" deleted successfully",email)
 
     return redirect('loan_dashboard')
 
@@ -93,7 +93,7 @@ def modify(request,pk):
             l.save()
             #print(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
             message="Loan with id="+str(l.pk)+" updated successfully \namount:"+str(l.amt)+"\ntenure:"+str(l.tenure)+"\ninterest:"+str(l.interest)
-            #send_message("Loan updated successfully",message,l.applicant.email)
+            send_message("Loan updated successfully",message,l.applicant.email)
 
             return redirect('loan_dashboard')
     else:

@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 import user.forms as forms
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from datetime import datetime
 # Create your views here.
 def register(request):
     if request.method=='POST':
@@ -10,6 +12,10 @@ def register(request):
         if form.is_valid():
             form.save()
             username=form.cleaned_data.get('username')
+            email=form.cleaned_data.get('email')
+            send_message("Welcome to LoanHunt fam!","Hi "+str(username)+",Welcome to the LoanHunt family where C2C loan becomes simple!!\n"
+                                                                        "Please update your BANK PROFILE asap.This will increase your CIBIL score for more benefits!!\n"
+                                                                        "Also you can update your profile anytime by visiting USER PROFILE.\nThankyou for trusting us!!",email)
             #messages.success(request,f'account created sucessfully for {username}.Please Login')
             return redirect('login')
         else:
@@ -29,6 +35,7 @@ def UpdateProfile(request):
             u_form.save()
             p_form.save()
             form = u_form
+            send_message("User profile updated successfully!","Your user profile updated on:"+str(datetime.now()),request.user.email)
             return redirect('home')
     else:
         u_form = forms.UserUpdateForm(instance=request.user)
@@ -37,3 +44,6 @@ def UpdateProfile(request):
         context = {'u_form': u_form, 'p_form': p_form}
 
         return render(request, 'users/UpdateProfile.html', context)
+
+def send_message(subject,message,to):
+    send_mail(subject,message,"loanhuntservices@gmail.com",[to],fail_silently=False)

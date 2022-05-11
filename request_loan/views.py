@@ -15,9 +15,9 @@ def modify_request(request,pk):
             loan_req.save()
             message = "Dear " + str(loan.applicant) + ", your loan with id:" + str(loan.id)+" got a new request.Following are details:\n" \
                                                                                             "client:"+str(request.user)+"\n Tenure:"+str(tenure)+"\n Interest:"+str(interest)
-            #send_message("Your Loan Got a request!", message, loan.applicant.email)
+            send_message("Your Loan Got a request!", message, loan.applicant.email)
             message = "You added a modification card with id:" + str(loan_req.id)
-            #send_message("Request send successfully!", message, loan_req.request.email)
+            send_message("Request send successfully!", message, loan_req.request.email)
             return redirect('loan_view')
     else:
             return render(request, 'req_loan/modify_loan.html')
@@ -41,9 +41,9 @@ def accept_modify(request,pk):
 
     message = "Dear " + str(l.applicant) + ", your loan with id:" + str(l.id) + " and amount:" + str(
         l.amt) + " has been accepted by " + str(l.lender)
-    #send_message("Loan accepted!", message, l.applicant.email)
+    send_message("Loan accepted!", message, l.applicant.email)
     message = "You have successfully accepted loan with id" + str(l.id) + " and amount:" + str(l.amt)
-    #send_message("loan processed successfully!", message, l.lender.email)
+    send_message("loan processed successfully!", message, l.lender.email)
 
     return redirect('loan_dashboard')
 
