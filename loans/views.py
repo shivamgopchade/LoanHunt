@@ -55,7 +55,7 @@ def apply_loan(request):
 @login_required
 def loan_dashboard(request):
 
-    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user),'mail_id':settings.SECRET_KEY,'pass':settings.EMAIL_HOST_PASSWORD}
+    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user),'mail_id':settings.EMAIL_HOST_USER,'pass':settings.EMAIL_HOST_PASSWORD}
 
     return render(request,'loans/loan_dashboard.html',context)
 @login_required
