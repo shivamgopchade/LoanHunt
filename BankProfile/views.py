@@ -1,5 +1,5 @@
 import decimal
-
+from django.core.mail import send_mail
 from django.shortcuts import render,redirect
 import BankProfile.forms as forms
 from django.contrib.auth.decorators import login_required
@@ -20,6 +20,7 @@ def bank_profile(request):
             #print(val)
             bp.CIBIL=val
             bp.save()
+            send_message("Bank Profile Updated!","your bank profile has been updated successfully!!",bp.user.email)
             #print("form saved")
             # messages.success(request,f'account created sucessfully for {username}.Please Login')
             return redirect('home')
@@ -31,3 +32,6 @@ def bank_profile(request):
     else:
         form = forms.BankProfileform(instance=request.user.bank_profile)    
     return render(request, 'bankform.html', {'form': form})
+
+def send_message(subject,message,to):
+    send_mail(subject,message,"loanhuntservices@gmail.com",[to],fail_silently=False)
