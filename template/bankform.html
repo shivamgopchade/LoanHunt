@@ -8,7 +8,7 @@
     </h2>
     <form method="POST" enctype="multipart/form-data" class="bank_form">
         {% csrf_token %}
-        <fieldset class="horizontal-form-group">
+        <fieldset class="vertical-form-group">
             {{ form|crispy }}
 
         </fieldset>
