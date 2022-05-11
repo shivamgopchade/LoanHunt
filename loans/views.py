@@ -54,7 +54,8 @@ def apply_loan(request):
 
 @login_required
 def loan_dashboard(request):
-    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user)}
+
+    context={'applied':loans.objects.filter(applicant=request.user),'accepted':loans.objects.filter(lender=request.user),'mail_id':settings.EMAIL_HOST_USER,'pass':settings.EMAIL_HOST_PASSWORD}
 
     return render(request,'loans/loan_dashboard.html',context)
 @login_required
@@ -90,7 +91,7 @@ def modify(request,pk):
             l.tenure = request.POST['tenure']
             l.interest = request.POST['interest']
             l.save()
-            print(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
+            #print(settings.EMAIL_HOST_USER,settings.EMAIL_HOST_PASSWORD)
             message="Loan with id="+str(l.pk)+" updated successfully \namount:"+str(l.amt)+"\ntenure:"+str(l.tenure)+"\ninterest:"+str(l.interest)
             send_message("Loan updated successfully",message,l.applicant.email)
 
