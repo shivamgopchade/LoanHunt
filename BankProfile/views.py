@@ -20,7 +20,7 @@ def bank_profile(request):
             #print(val)
             bp.CIBIL=val
             bp.save()
-            #send_message("Bank Profile Updated!","your bank profile has been updated successfully!!",bp.user.email)
+            send_message("Bank Profile Updated!","your bank profile has been updated successfully!!",bp.user.email)
             #print("form saved")
             # messages.success(request,f'account created sucessfully for {username}.Please Login')
             return redirect('home')
