@@ -7,11 +7,7 @@ BY:<br />
 <br/>
 FrameWork:Django<br/>
 DB:SQLite <br/>
-Instructions:<br/>
-Fork:https://github.com/shivamgopchade/LoanHunt <br/>
-code and type in terminal <br/>
-python manage.py runserver <br/>
-This will run app at 8000 port. <br/>
+Link:https://github.com/shivamgopchade/LoanHunt <br/>
 <br/>
 NOTE:<br/>
 You can update userprofile, but avoid updating profile picture. Currently Heroku dont support static file storage
