@@ -3,7 +3,6 @@ c2c loan lending web app<br/>
 LoanHunter web app:<br/>
 BY:<br />
 -shivam<br/>
--Rushabh<br/>
 <br/>
 FrameWork:Django<br/>
 DB:SQLite <br/>
